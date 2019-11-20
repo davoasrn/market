@@ -1,4 +1,28 @@
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+import Bootstrap from 'bootstrap'
+import VueRouter from 'vue-router'
+import axios from 'axios'
+
 window._ = require('lodash');
+
+window.Vue = Vue;
+
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -6,7 +30,7 @@ window._ = require('lodash');
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
